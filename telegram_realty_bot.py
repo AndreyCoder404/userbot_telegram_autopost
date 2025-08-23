@@ -66,8 +66,8 @@ class TelegramRealtyBot:
         config_content = """[Telegram]
 api_id = YOUR_API_ID
 api_hash = YOUR_API_HASH
-source_channel = @domthailand
-groups = @resnenko_v2,@resnenko_v1,@resnenko_v3,@resnenko_v4
+source_channel = @source_group 
+groups = @group_1, group_2 .....
 repost_mode = forward
 daily_reposts = 5
 min_interval = 60
@@ -129,9 +129,8 @@ cooldown_on_error = 300
         """Fetch all posts from source channel published today, grouped by albums"""
         try:
             tz = pytz.timezone(self.config.get('Settings', 'timezone', fallback='Europe/Moscow'))
-            #костыль ниже - он берет дату за 21.08.2025 и каждый раз тут придется переделывать , а также заново публиковать весь сет всех публикаций, при добавдении новых постов
-            #потому что новые посты не войдут в этот сет публикаций за 21.08.2025 вот так было: today = datetime.now(tz).date()
-            today = datetime(2025, 8, 21, tzinfo=tz).date()
+        
+           today = datetime.now(tz).date()
             raw_messages = []
             source_channel = self.config['Telegram']['source_channel']
             max_posts = int(self.config.get('Settings', 'max_posts_per_day', fallback=10000))
@@ -423,4 +422,5 @@ def main():
         sys.exit(1)
 
 if __name__ == '__main__':
+
     main()
