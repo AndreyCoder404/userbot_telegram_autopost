@@ -1,0 +1,22 @@
+# Конфиденциальные файлы
+config.ini
+*.session  # Сессионные файлы Telethon (realty_bot_session.session и т.д.)
+*.session-journal
+
+# Логи и статистика
+realty_bot_*.log
+daily_stats_*.json
+
+# Временные файлы Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE файлы (если используете VS Code, PyCharm и т.д.)
+.vscode/
+.idea/
+
+# Другие временные файлы
+*.tmp
+posts_db.json  
